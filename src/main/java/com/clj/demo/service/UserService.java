@@ -30,6 +30,11 @@ public interface UserService {
     User createUser(User user);
 
     /**
+     * 测试新增用户信息
+     */
+    void saveUser(User user);
+
+    /**
      * 修改用户信息
      *
      * @param user -修改用户信息
@@ -42,7 +47,7 @@ public interface UserService {
      *
      * @param id -用户id
      */
-    void deleteUser(Long id);
+    Boolean deleteUser(Long id);
 
     /**
      * 根据用户id查询用户信息
@@ -74,4 +79,27 @@ public interface UserService {
      * @return
      */
     User findUserByUserName(String userName);
+
+    /**
+     * 注册用户
+     *
+     * @param user -新增用户信息
+     * @return
+     */
+    Boolean registUser(User user);
+
+    /**
+     * 修改用户信息
+     *
+     * @param user -修改用户信息
+     * @return
+     */
+    Boolean modifyUser(User user);
+
+    /**
+     * 获取相应数量
+     *
+     * @return
+     */
+    Long getCount();
 }

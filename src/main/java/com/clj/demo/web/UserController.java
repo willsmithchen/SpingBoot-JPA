@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
@@ -21,9 +22,10 @@ import java.util.List;
 @RestController
 @Api(tags = "用户管理")
 @RequestMapping(value = "/user-manager")
+@SuppressWarnings("unchecked")
 public class UserController {
 
-    @Autowired
+    @Resource
     private UserService userService;
 
     @GetMapping
@@ -46,9 +48,16 @@ public class UserController {
 
     @PostMapping
     @ApiOperation(value = "新增用户")
-    public OutCome createUser(@RequestBody @ApiParam(value = "用户新增参数") User user) {
+    public OutCome<Boolean> createUser(@RequestBody @ApiParam(value = "用户新增参数") User user) {
         userService.createUser(user);
-        return OutCome.success().setMessage("新增成功");
+        return OutCome.success().setMessage("新增成功").setData(true);
+    }
+
+    @PostMapping(value = "/save-user")
+    @ApiOperation(value = "测试新增用户")
+    public OutCome<Boolean> saveUser(@RequestBody @ApiParam(value = "用户新增参数") User user) {
+        userService.saveUser(user);
+        return OutCome.success().setMessage("新增成功").setData(true);
     }
 
     @PutMapping
@@ -60,8 +69,13 @@ public class UserController {
     @DeleteMapping(value = "/{id}")
     @ApiOperation(value = "删除用户")
     public OutCome deleteUser(@PathVariable @ApiParam(value = "用户id") Long id) {
-        userService.deleteUser(id);
-        return OutCome.success().setMessage("删除成功");
+
+        Boolean result = userService.deleteUser(id);
+        if (result) {
+
+            return OutCome.success().setMessage("删除成功").setData(true);
+        }
+        return OutCome.success().setMessage("删除失败").setData(false);
     }
 
     @PostMapping(value = "/upload-file")

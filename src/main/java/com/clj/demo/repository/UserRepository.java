@@ -21,4 +21,13 @@ public interface UserRepository extends JpaRepository<User, Long>, CrudRepositor
      * @return
      */
     User findUserByName(String name);
+
+    /**
+     * 设置静态方法
+     *
+     * @return
+     */
+    static Long getCount() {
+        return 10L;
+    }
 }

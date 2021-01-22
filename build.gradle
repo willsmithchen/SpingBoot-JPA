@@ -14,50 +14,48 @@ repositories {
 
 
 dependencies {
+    //web-MVC依赖
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.4.2'
+    //jpa依赖
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.4.2'
+    //测试集合
+    implementation 'org.springframework.boot:spring-boot-starter-test:2.4.2'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.1'
-
-// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.4.1'
-// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
-    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.4.1'
-
-
-
-// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jdbc
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.4.1'
-// https://mvnrepository.com/artifact/mysql/mysql-connector-java
-    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.22'
-// https://mvnrepository.com/artifact/org.projectlombok/lombok
-//    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
+    //Mockito依赖
+    implementation 'org.mockito:mockito-core:3.7.7'
+    implementation 'org.mockito:mockito-all:2.0.2-beta'
+    implementation 'junit:junit:4.13.1'
+    //PowerMock依赖
+    implementation 'org.powermock:powermock-module-testng:2.0.9'
+    implementation 'org.powermock:powermock-module-junit4:2.0.9'
+    implementation 'org.powermock:powermock-api-mockito2:2.0.9'
+    //工具类集合依赖
+    implementation 'cn.hutool:hutool-all:5.5.7'
+    //数据库连接依赖
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc:2.4.2'
+    implementation 'mysql:mysql-connector-java:8.0.23'
+    implementation 'com.alibaba:druid:1.2.4'
+    //lombok自动get、set依赖
     compileOnly 'org.projectlombok:lombok:1.18.16'
     annotationProcessor 'org.projectlombok:lombok:1.18.16'
-// https://mvnrepository.com/artifact/com.github.xiaoymin/knife4j-spring-boot-starter
-    compile group: 'com.github.xiaoymin', name: 'knife4j-spring-boot-starter', version: '2.0.2'
-    // https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
-    compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
-// https://mvnrepository.com/artifact/org.liquibase/liquibase-core
-//    compile group: 'org.liquibase', name: 'liquibase-core', version: '4.2.2'
-// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.4.1'
-// https://mvnrepository.com/artifact/com.alibaba/druid
-    compile group: 'com.alibaba', name: 'druid', version: '1.2.4'
-// https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-client
-    compile group: 'org.apache.rocketmq', name: 'rocketmq-client', version: '4.7.1'
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-configuration-processor
-//    compile group: 'org.springframework.boot', name: 'spring-boot-configuration-processor', version: '2.4.1'
-    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:2.4.1"
-// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-autoconfigure-processor
-    compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure-processor', version: '2.4.1'
-//    //反应式web框架 webflux
-//    compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.4.1'
-//    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-r2dbc
-//    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-r2dbc', version: '2.4.1'
-//    // https://mvnrepository.com/artifact/dev.miku/r2dbc-mysql  -----r2dbc mysql 库
-//    compile group: 'dev.miku', name: 'r2dbc-mysql', version: '0.8.2.RELEASE'
+    //swagger依赖
+    implementation 'com.github.xiaoymin:knife4j-spring-boot-starter:2.0.2'
+    //文件上传依赖
+    implementation 'commons-fileupload:commons-fileupload:1.4'
 
+    implementation 'org.springframework.boot:spring-boot-starter-validation:2.4.2'
+
+    implementation 'org.apache.rocketmq:rocketmq-client:4.8.0'
+    //自动提示依赖
+    implementation 'org.springframework.boot:spring-boot-configuration-processor:2.4.2'
+    implementation 'org.springframework.boot:spring-boot-autoconfigure-processor:2.4.2'
+    //断点监控
+    implementation 'org.springframework.boot:spring-boot-starter-actuator:2.4.2'
+    //日志文件管理依赖
+//    implementation 'log4j:log4j:1.2.17'
+//    implementation 'org.slf4j:slf4j-api:1.7.30'
+//    implementation 'org.springframework.boot:spring-boot-starter-log4j:1.3.8.RELEASE'
 }
 
 compileJava.inputs.files(processResources)

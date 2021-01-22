@@ -42,13 +42,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void saveUser(User user) {
+        createUser(user);
+    }
+
+    @Override
     public User updateUser(User user) {
         return userRepository.saveAndFlush(user);
     }
 
     @Override
-    public void deleteUser(Long id) {
+    public Boolean deleteUser(Long id) {
         userRepository.deleteById(id);
+        return true;
     }
 
     @Override
@@ -118,4 +124,20 @@ public class UserServiceImpl implements UserService {
         return userRepository.findUserByName(userName);
     }
 
+    @Override
+    public Boolean registUser(User user) {
+        createUser(user);
+        return true;
+    }
+
+    @Override
+    public Boolean modifyUser(User user) {
+        updateUser(user);
+        return true;
+    }
+
+    @Override
+    public Long getCount() {
+        return UserRepository.getCount();
+    }
 }

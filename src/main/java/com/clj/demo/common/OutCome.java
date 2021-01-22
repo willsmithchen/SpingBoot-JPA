@@ -21,6 +21,7 @@ import java.util.Optional;
 @NoArgsConstructor
 @Accessors(chain = true)
 @ApiModel(description = "返回信息")
+@SuppressWarnings("unchecked")
 public class OutCome<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;

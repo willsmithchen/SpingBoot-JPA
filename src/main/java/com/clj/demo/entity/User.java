@@ -2,7 +2,6 @@ package com.clj.demo.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -47,5 +46,15 @@ public class User implements Serializable {
     @ApiModelProperty(name = "delFlag", value = "用户信息删除标识")
     private Integer delFlag;
 
+    public static String getNickName(String name) {
+        return name;
+    }
+
+    public User() {
+    }
+
+    public User(String name) {
+        this.name = name;
+    }
 }
 
