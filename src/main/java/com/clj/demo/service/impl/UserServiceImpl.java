@@ -3,6 +3,7 @@ package com.clj.demo.service.impl;
 import com.clj.demo.entity.User;
 import com.clj.demo.repository.UserRepository;
 import com.clj.demo.service.UserService;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -120,7 +122,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserByUserName(String userName) {
+    public List<User> findUserByUserName(String userName) {
         return userRepository.findUserByName(userName);
     }
 
@@ -140,4 +142,24 @@ public class UserServiceImpl implements UserService {
     public Long getCount() {
         return UserRepository.getCount();
     }
+
+    @Override
+    public User login(String username, String password) {
+        User user = userRepository.login(username, password);
+        if (Objects.isNull(user)) {
+            return null;
+        }
+        return user;
+    }
+
+    @SneakyThrows
+    @Override
+    public Boolean register(User user, MultipartFile file) {
+        InputStream inputStream = file.getInputStream();
+        byte[] imageBytes = new byte[inputStream.available()];
+        user.setImg(imageBytes);
+        return registUser(user);
+    }
+
+
 }

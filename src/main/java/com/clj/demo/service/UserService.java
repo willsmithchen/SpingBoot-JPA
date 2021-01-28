@@ -78,7 +78,7 @@ public interface UserService {
      * @param userName
      * @return
      */
-    User findUserByUserName(String userName);
+    List<User> findUserByUserName(String userName);
 
     /**
      * 注册用户
@@ -102,4 +102,22 @@ public interface UserService {
      * @return
      */
     Long getCount();
+
+    /**
+     * 用户登录
+     *
+     * @param username -用户名
+     * @param password -密码
+     * @return 是否成功
+     */
+    User login(String username, String password);
+
+    /**
+     * 注册用户信息
+     *
+     * @param user -用户信息
+     * @param file -文件流
+     * @return
+     */
+    Boolean register(User user, MultipartFile file);
 }

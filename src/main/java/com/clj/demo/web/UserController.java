@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class UserController {
 
     @GetMapping(value = "/name/{userName}")
     @ApiOperation(value = "根据用户名查询")
-    public OutCome<User> findUserById(@PathVariable @ApiParam String userName) {
+    public OutCome<List<User>> findUserById(@PathVariable @ApiParam String userName) {
         return OutCome.success(userService.findUserByUserName(userName));
     }
 
@@ -81,12 +82,11 @@ public class UserController {
     @PostMapping(value = "/upload-file")
     @ApiOperation(value = "上传用户图片")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "Long"),
-            @ApiImplicitParam(name = "multipartFile", value = "文件流对象,接收数组格式", required = true, dataType = "__File")
-
+            @ApiImplicitParam(name = "id", value = "用户id", required = true, dataTypeClass = Long.class),
+            @ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true, dataType = "__File", dataTypeClass = MultipartFile.class)
     })
-    public OutCome uploadFile(Long id, @RequestParam(value = "multipartFile") MultipartFile multipartFile) {
-        userService.uploadFile(id, multipartFile);
+    public OutCome uploadFile(@RequestParam(value = "id") Long id, @RequestParam(value = "file") MultipartFile file) {
+        userService.uploadFile(id, file);
         return OutCome.success().setMessage("上传成功");
     }
 
