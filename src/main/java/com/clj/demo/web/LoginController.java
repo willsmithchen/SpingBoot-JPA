@@ -41,7 +41,7 @@ public class LoginController {
     @ApiOperation(value = "注册用户")
     @PostMapping(value = "/register")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,dataType = "__File")
+            @ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", required = true,dataType = "MultipartFile")
     })
     public OutCome register(@RequestParam(value = "file") MultipartFile file, @RequestBody User user) {
         Boolean result = userService.register(user, file);

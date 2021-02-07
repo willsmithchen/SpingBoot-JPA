@@ -1,8 +1,11 @@
 package com.clj.demo;
 
+import com.clj.demo.spring.StartupHelper;
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * @Author lujia chen
@@ -11,10 +14,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2020/12/21
  * @Version 1.0.version
  **/
+@Slf4j
 @EnableAdminServer
 @SpringBootApplication
 public class DemoApplication {
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        ConfigurableApplicationContext ctx = SpringApplication.run(DemoApplication.class, args);
+        StartupHelper.printStartInfo(log, ctx);
     }
 }
