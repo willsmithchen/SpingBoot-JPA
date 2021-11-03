@@ -3,15 +3,18 @@ package com.clj.demo.web;
 import com.clj.demo.common.OutCome;
 import com.clj.demo.entity.User;
 import com.clj.demo.service.UserService;
+import com.clj.demo.util.JSONUtil;
+import com.clj.demo.util.ZzSecurityHelper;
 import io.swagger.annotations.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @Author lujia chen
@@ -20,6 +23,7 @@ import java.util.List;
  * @date 2020/12/21
  * @Version 1.0.version
  **/
+@Slf4j
 @RestController
 @Api(tags = "用户管理")
 @RequestMapping(value = "/user-manager")
@@ -95,5 +99,15 @@ public class UserController {
     @GetMapping(value = "/preview-image", produces = {"image/jpg", "image/png", "image/jpeg"})
     public void previewImage(Long id, HttpServletResponse response) {
         userService.previewImage(id, response);
+    }
+
+    @SneakyThrows
+    @ApiOperation(value = "回调接口")
+    @ApiImplicitParam(name = "json", value = "JSON", required = true, dataType = "String")
+    @PostMapping("/rollback-data")
+    public OutCome rollbackUrl(@RequestBody String json) {
+        String result = ZzSecurityHelper.decryptAES(json, "TBiIiTF5RUkL9fBW");
+        log.info("开始回调,回调结果为:{}", result);
+        return OutCome.success().setMessage("成功").setCode(0);
     }
 }

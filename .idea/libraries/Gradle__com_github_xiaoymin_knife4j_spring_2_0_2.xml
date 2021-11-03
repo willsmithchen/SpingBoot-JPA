@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.xiaoymin:knife4j-spring:2.0.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.xiaoymin/knife4j-spring/2.0.2/3a0f11fb33a3fecf06fa7d4681ba6ada2aa0f2cc/knife4j-spring-2.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.xiaoymin/knife4j-spring/2.0.2/3eb2d4270dd33b6a1e25df6fe419b9abe1762020/knife4j-spring-2.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

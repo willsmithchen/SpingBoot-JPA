@@ -16,7 +16,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * @Author lujia chen
@@ -61,8 +60,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserById(Long id) {
-        Optional<User> user = userRepository.findById(id);
-        return user.get();
+        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("不存在的id" + id));
+//        List<String> userNames=new ArrayList<>();
+//        userNames.add("李三");
+//        User userByUserName = userRepository.findUserByUserName(userNames);
+        return user;
     }
 
     @Override

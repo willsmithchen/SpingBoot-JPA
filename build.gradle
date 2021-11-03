@@ -7,6 +7,12 @@ group 'org.example'
 version '1.0-SNAPSHOT'
 
 repositories {
+    mavenLocal()
+    maven { url "https://packages.atlassian.com/maven-3rdparty/" }
+
+    maven { url "http://repo.e-iceblue.com/nexus/content/repositories/public/" }
+
+    maven { url "https://repository.aspose.com/repo/" }
     mavenCentral()
     jcenter()
     google()
@@ -54,8 +60,46 @@ dependencies {
     //断点监控
 //    implementation 'org.springframework.boot:spring-boot-starter-actuator:2.4.2'
     //管理和监控SpringBoot应用程序
-    implementation'de.codecentric:spring-boot-admin-starter-server:2.3.1'
+    implementation 'de.codecentric:spring-boot-admin-starter-server:2.3.1'
     implementation 'de.codecentric:spring-boot-admin-server-ui:2.3.1'
+
+    implementation 'com.alibaba:fastjson:1.2.15'
+    implementation 'org.apache.httpcomponents:httpclient:4.2.1'
+    implementation 'org.apache.httpcomponents:httpcore:4.2.1'
+    implementation 'commons-lang:commons-lang:2.6'
+    implementation 'org.eclipse.jetty:jetty-util:9.3.7.v20160115'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.12.3'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.12.3'
+    implementation 'e-iceblue:spire.pdf:4.4.8'
+    // https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox
+//    implementation 'org.apache.pdfbox:pdfbox:1.8.10'
+    // https://mvnrepository.com/artifact/technology.tabula/tabula
+    implementation('technology.tabula:tabula:1.0.5') {
+        exclude group: 'org.slf4j'
+    }
+    // https://mvnrepository.com/artifact/com.aspose/aspose-pdf
+    implementation 'com.aspose:aspose-pdf:21.8'
+    //PDFca签名验签
+    implementation group: 'org.apache.commons', name: 'commons-imaging', version: '1.0-alpha1'
+    implementation group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13'
+    implementation group: 'com.itextpdf', name: 'itext-asian', version: '5.2.0'
+    implementation group: 'com.itextpdf', name: 'itext-xtra', version: '5.5.13'
+    implementation group: 'com.itextpdf', name: 'itext-pdfa', version: '5.5.13'
+    implementation group: 'com.itextpdf.tool', name: 'xmlworker', version: '5.5.13'
+    implementation group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.49'
+    implementation group: 'org.bouncycastle', name: 'bcpkix-jdk15on', version: '1.49'
+    implementation group: 'org.jfree', name: 'jfreechart', version: '1.0.19'
+    //绿盾解密api
+//    compile group: 'com.tiprayapi', name: 'tiprayapi', version: '1.0'
+    // for Main sources set
+    implementation 'org.mapstruct:mapstruct-jdk8:1.2.0.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.2.0.Final'
+
+    // for Test sources set
+    testAnnotationProcessor "org.mapstruct:mapstruct-processor:1.2.0.Final"
+//    implementation 'org.mapstruct:mapstruct-processor:1.5.0.Beta1'
+
 }
 
 compileJava.inputs.files(processResources)
